@@ -732,44 +732,33 @@ nav.scrolled {
 }
 .photo-inner { max-width: 1280px; margin: 0 auto; }
 
-.photo-masonry{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-    gap:1.2rem;
+.photo-masonry {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 300px;
+  gap: 1rem;
+  margin-top: 4rem;
 }
-.p-item{
-    overflow:hidden;
-    border-radius:10px;
+.p-item {
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
 }
-.p-item::after{
-    content:attr(data-caption);
-    position:absolute;
-    left:0;
-    right:0;
-    bottom:0;
-
-    padding:14px;
-    color:#fff;
-
-    font-size:.85rem;
-    line-height:1.5;
-
-    background:linear-gradient(
-        to top,
-        rgba(6,15,30,.95),
-        rgba(6,15,30,.45),
-        transparent
-    );
-
-    transform:none;
+.p-item::after {
+  content: attr(data-caption);
+  position: absolute; bottom: 0; left: 0; right: 0;
+  background: linear-gradient(to top, rgba(6,15,30,0.92) 0%, transparent 100%);
+  color: rgba(255,255,255,0.92);
+  font-size: 0.8rem; line-height: 1.5; font-weight: 500;
+  padding: 2rem 1.1rem 1rem;
+  transform: translateY(100%);
+  transition: transform 0.4s var(--ease-out);
 }
-.p-item:hover img{
-    transform:scale(1.05);
-}
-.p-item img{
-    width:100%;
-    height:auto;
-    display:block;
+.p-item:hover::after { transform: translateY(0); }
+.p-item img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.5s ease, filter 0.5s ease;
+  filter: brightness(0.88);
 }
 .p-item:hover img { transform: scale(1.06); filter: brightness(1); }
 
